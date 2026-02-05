@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
 const navItems = [
+  { label: "Projects", href: "#projects" },
+  { label: "Op-Ed", href: "#op-ed" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
