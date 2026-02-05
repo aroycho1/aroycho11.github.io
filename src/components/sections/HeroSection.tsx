@@ -11,7 +11,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <p className="text-muted-foreground uppercase tracking-[0.3em] text-sm mb-6">
-            Welcome to my world
+            GTM & Growth Strategy
           </p>
         </motion.div>
 
@@ -21,7 +21,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
-          Hi, I'm <span className="text-primary">Your Name</span>
+          Hi, I'm <span className="text-primary">Abhiroop R.</span>
         </motion.h1>
 
         <motion.p
@@ -30,8 +30,8 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
         >
-          A passionate developer crafting beautiful digital experiences. 
-          I believe in the power of clean code and thoughtful design.
+          GTM & Operations strategist with expertise in building pipelines, 
+          automating workflows, and driving revenue growth through data-driven strategies.
         </motion.p>
 
         <motion.div

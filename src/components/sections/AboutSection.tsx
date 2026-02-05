@@ -18,7 +18,7 @@ const AboutSection = () => {
             About Me
           </p>
           <h2 className="section-title mb-8">
-            Turning ideas into reality
+            Driving Growth Through Strategy
           </h2>
         </motion.div>
 
@@ -29,14 +29,14 @@ const AboutSection = () => {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           >
             <p className="section-subtitle leading-relaxed mb-6">
-              I'm a developer with a passion for creating beautiful, functional, 
-              and user-centered digital experiences. With years of experience in 
-              the field, I bring ideas to life through clean code and thoughtful design.
+              I'm a GTM and Operations professional with a passion for building 
+              scalable growth engines. With experience at startups and EdTech unicorns, 
+              I specialize in pipeline development, CRM optimization, and revenue operations.
             </p>
             <p className="section-subtitle leading-relaxed">
-              When I'm not coding, you can find me exploring new technologies, 
-              contributing to open-source projects, or sharing knowledge with 
-              the developer community.
+              Currently pursuing my M.S. in Engineering Management at UMBC with a 3.83 GPA, 
+              I combine analytical rigor with hands-on execution to deliver measurable 
+              business outcomes.
             </p>
           </motion.div>
 
@@ -48,15 +48,15 @@ const AboutSection = () => {
           >
             <div className="flex items-center gap-4">
               <div className="w-2 h-2 rounded-full bg-primary" />
-              <span className="text-foreground font-medium">Based in Your City</span>
+              <span className="text-foreground font-medium">Based in Maryland, USA</span>
             </div>
             <div className="flex items-center gap-4">
               <div className="w-2 h-2 rounded-full bg-secondary" />
-              <span className="text-foreground font-medium">Open to opportunities</span>
+              <span className="text-foreground font-medium">Certified Scrum Product Owner (CSPO)</span>
             </div>
             <div className="flex items-center gap-4">
               <div className="w-2 h-2 rounded-full bg-primary" />
-              <span className="text-foreground font-medium">Lifelong learner</span>
+              <span className="text-foreground font-medium">Open to opportunities</span>
             </div>
           </motion.div>
         </div>

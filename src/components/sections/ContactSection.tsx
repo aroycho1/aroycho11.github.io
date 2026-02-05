@@ -1,13 +1,12 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Linkedin, Mail, Phone } from "lucide-react";
 
 const socials = [
-  { icon: Github, href: "https://github.com/yourusername", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com/in/yourusername", label: "LinkedIn" },
-  { icon: Twitter, href: "https://twitter.com/yourusername", label: "Twitter" },
-  { icon: Mail, href: "mailto:your@email.com", label: "Email" },
+  { icon: Linkedin, href: "https://linkedin.com/in/abhiroop-r-9527a0281", label: "LinkedIn" },
+  { icon: Mail, href: "mailto:abhiroop.roychowdhury13@gmail.com", label: "Email" },
+  { icon: Phone, href: "tel:+16674331672", label: "Phone" },
 ];
 
 const ContactSection = () => {
@@ -27,8 +26,8 @@ const ContactSection = () => {
           </p>
           <h2 className="section-title mb-6">Let's Connect</h2>
           <p className="section-subtitle max-w-xl mx-auto mb-12">
-            I'm always open to discussing new projects, creative ideas, 
-            or opportunities to be part of your vision.
+            I'm always open to discussing new opportunities, GTM strategies, 
+            or ways to drive growth for your organization.
           </p>
         </motion.div>
 
@@ -61,7 +60,7 @@ const ContactSection = () => {
           transition={{ duration: 0.8, delay: 1 }}
           className="mt-24 text-muted-foreground text-sm"
         >
-          © {new Date().getFullYear()} Your Name. Built with passion.
+          © {new Date().getFullYear()} Abhiroop R. Built with passion.
         </motion.p>
       </div>
     </section>
