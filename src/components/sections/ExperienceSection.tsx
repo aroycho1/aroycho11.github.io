@@ -5,21 +5,27 @@ import { useRef } from "react";
 const experiences = [
   {
     year: "2024",
-    title: "Senior Developer",
-    company: "Tech Company",
-    description: "Leading development of innovative web applications.",
+    title: "GTM and Operations Associate",
+    company: "DriveX Network",
+    description: "Led GTM execution for AI simulation platform, building $2.35M qualified pipeline. Built Clay-powered outbound engine increasing qualified pipeline by 20%.",
+  },
+  {
+    year: "2024",
+    title: "Graduate Assistant",
+    company: "University of Maryland Baltimore County",
+    description: "Running targeted outreach campaigns and maintaining back-office data systems using SQL to optimize tutor and session coverage.",
   },
   {
     year: "2022",
-    title: "Full Stack Developer",
-    company: "Startup Inc.",
-    description: "Built scalable solutions from concept to deployment.",
+    title: "Founding Head of Strategy – Growth",
+    company: "Sunya IAS",
+    description: "4th hire, owned institutional GTM strategy. Delivered 45% YoY revenue growth and 30+ institutional customers through integrated demand generation.",
   },
   {
     year: "2020",
-    title: "Junior Developer",
-    company: "Agency Co.",
-    description: "Started my journey in professional web development.",
+    title: "Category Operations Associate",
+    company: "Unacademy",
+    description: "Drove growth for Iconic subscription program, adding 5,000 subscribers and ~$1.5M in revenue while improving customer satisfaction by 30%.",
   },
 ];
 
@@ -48,7 +54,7 @@ const ExperienceSection = () => {
 
           {experiences.map((exp, index) => (
             <motion.div
-              key={exp.year}
+              key={`${exp.year}-${exp.company}`}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }}

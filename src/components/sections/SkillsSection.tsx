@@ -2,13 +2,27 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
-const skills = [
-  { name: "JavaScript", level: 90 },
-  { name: "React", level: 85 },
-  { name: "TypeScript", level: 80 },
-  { name: "Node.js", level: 75 },
-  { name: "Python", level: 70 },
-  { name: "CSS/Tailwind", level: 88 },
+const skillCategories = [
+  {
+    category: "CRM & Lead Management",
+    skills: ["Clay", "HubSpot", "PeopleGPT"],
+  },
+  {
+    category: "Data Analytics & Visualization",
+    skills: ["Python", "SQL", "Tableau", "Jupyter Notebook"],
+  },
+  {
+    category: "Automation & Workflow",
+    skills: ["Zapier", "Asana"],
+  },
+  {
+    category: "Funnel Metrics",
+    skills: ["Google Analytics", "HubSpot"],
+  },
+  {
+    category: "Design & Prototyping",
+    skills: ["Canva", "Figma"],
+  },
 ];
 
 const SkillsSection = () => {
@@ -27,29 +41,30 @@ const SkillsSection = () => {
           <p className="text-primary uppercase tracking-[0.2em] text-sm mb-4">
             Expertise
           </p>
-          <h2 className="section-title">Skills & Technologies</h2>
+          <h2 className="section-title">Skills & Tools</h2>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {skills.map((skill, index) => (
+          {skillCategories.map((category, index) => (
             <motion.div
-              key={skill.name}
+              key={category.category}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
-              className="group"
+              className="bg-card border border-border rounded-lg p-6"
             >
-              <div className="flex justify-between mb-2">
-                <span className="font-medium text-foreground">{skill.name}</span>
-                <span className="text-muted-foreground">{skill.level}%</span>
-              </div>
-              <div className="h-2 bg-muted rounded-full overflow-hidden">
-                <motion.div
-                  className="h-full bg-gradient-to-r from-primary to-secondary rounded-full"
-                  initial={{ width: 0 }}
-                  animate={isInView ? { width: `${skill.level}%` } : {}}
-                  transition={{ duration: 1, delay: 0.5 + index * 0.1, ease: "easeOut" }}
-                />
+              <h3 className="text-lg font-semibold text-foreground mb-4">
+                {category.category}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-3 py-1.5 bg-muted text-muted-foreground rounded-full text-sm hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+                  >
+                    {skill}
+                  </span>
+                ))}
               </div>
             </motion.div>
           ))}
