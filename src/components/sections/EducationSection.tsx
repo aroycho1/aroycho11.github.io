@@ -20,7 +20,6 @@ const education = [
   {
     university: "National Institute of Technology, Durgapur",
     degree: "B.Tech in Civil Engineering",
-    period: "2016 - 2020",
     logo: nitLogo,
     flag: flagIndia,
     country: "India",
@@ -82,10 +81,10 @@ const EducationSection = () => {
                     {edu.degree}
                   </p>
                   <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <span>{edu.period}</span>
+                    {edu.period && <span>{edu.period}</span>}
                     {edu.gpa && (
                       <>
-                        <span className="w-1 h-1 rounded-full bg-muted-foreground" />
+                        {edu.period && <span className="w-1 h-1 rounded-full bg-muted-foreground" />}
                         <span className="text-secondary font-medium">{edu.gpa}</span>
                       </>
                     )}
