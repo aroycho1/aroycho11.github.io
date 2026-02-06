@@ -1,8 +1,30 @@
 import { motion } from "framer-motion";
-import { Bot, Search, Users, Mail, Moon, Volume2, Vibrate, Eye, BarChart3, Target, ClipboardCheck, MessageSquare, TrendingUp, FileText } from "lucide-react";
+import { Bot, Search, Users, Mail, Moon, Volume2, Vibrate, Eye, BarChart3, Target, ClipboardCheck, MessageSquare, TrendingUp, FileText, GraduationCap, Sparkles, BookOpen, Wrench } from "lucide-react";
 import slumbrProduct from "@/assets/slumbr-product.jpg";
+import gptHigherEdVideo from "@/assets/gpt-higher-ed-video.mp4";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 const projects = [
+  {
+    title: "Building Custom GPTs for Higher Ed",
+    description: "Presented AI-powered innovations for modernizing assessments in higher education, demonstrating how custom GPTs can enhance learning center operations and student support.",
+    videoSrc: gptHigherEdVideo,
+    purpose: "Empower educators with practical AI tools to modernize assessment methods, improve tutoring efficiency, and enhance student learning outcomes through custom GPT implementations.",
+    tools: [
+      "Custom GPT development & configuration",
+      "Prompt engineering for educational contexts",
+      "Educational technology integration strategies",
+      "Assessment automation workflows"
+    ],
+    toolsLabel: "AI Tools & Methods",
+    highlights: [
+      { icon: Sparkles, label: "AI Assessment", desc: "Modernized evaluation methods" },
+      { icon: Bot, label: "Custom GPTs", desc: "Tailored for education" },
+      { icon: BookOpen, label: "Learning Centers", desc: "Enhanced student support" },
+      { icon: Wrench, label: "Educator Tools", desc: "Practical implementation" }
+    ],
+    type: "local-video" as const
+  },
   {
     title: "AI-Powered GTM Engine",
     description: "Built an intelligent Go-To-Market engine that automates lead discovery, enrichment, and outreach strategy using AI-driven signals and data pipelines.",
@@ -142,7 +164,16 @@ const ProjectsSection = () => {
                 viewport={{ once: true }}
                 className="relative rounded-xl overflow-hidden shadow-2xl bg-card border border-border"
               >
-                {project.type === "video" && project.loomEmbed ? (
+              {project.type === "local-video" && "videoSrc" in project ? (
+                  <div className="aspect-video">
+                    <video
+                      src={project.videoSrc}
+                      controls
+                      className="w-full h-full object-cover"
+                      title={project.title}
+                    />
+                  </div>
+                ) : project.type === "video" && "loomEmbed" in project ? (
                   <div className="aspect-video">
                     <iframe
                       src={project.loomEmbed}
@@ -152,7 +183,7 @@ const ProjectsSection = () => {
                       title={project.title}
                     />
                   </div>
-                ) : project.image ? (
+                ) : "image" in project && project.image ? (
                   <div className="aspect-video">
                     <img
                       src={project.image}

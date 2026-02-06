@@ -7,6 +7,7 @@ const navItems = [
   { label: "Op-Ed", href: "#op-ed" },
   { label: "About", href: "#about" },
   { label: "Education", href: "#education" },
+  { label: "Conferences", href: "#conferences" },
   { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
