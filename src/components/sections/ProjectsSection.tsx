@@ -27,12 +27,12 @@ const projects = [
     title: "Slumbr — Smart Sleep Mask",
     description: "Designed and pitched a next-generation smart sleep mask for a Product Development class, featuring bone conduction audio, haptic alarms, and C-shaped blackout cups.",
     image: slumbrProduct,
-    purpose: "Address the $16.6B sleep tech market where 4 in 10 adults report sleep difficulties and 72% feel sleepy multiple days per week. Slumbr delivers total blackout, personalized audio, and silent alarms—all in one comfortable mask priced at $79.99.",
+    purpose: "Address the $16.6B sleep tech market where 4 in 10 adults report sleep difficulties and 72% feel sleepy multiple days per week. Targeting a $2.3B SAM with a premium $79.99 product at 68% gross margin, projecting $53M Year 1 revenue scaling to $151M by Year 5.",
     tools: [
       "Quality Function Deployment (QFD) analysis",
       "Voice of Customer research & synthesis",
-      "Stakeholder mapping & market sizing (TAM/SAM/SOM)",
-      "Financial modeling with 254% IRR projection"
+      "TAM/SAM/SOM market sizing with bottom-up validation",
+      "5-year financial modeling (30% YoY growth, 254% IRR)"
     ],
     toolsLabel: "Product Development Methods",
     highlights: [
@@ -42,10 +42,14 @@ const projects = [
       { icon: Eye, label: "Premium Comfort", desc: "Washable silk, side-sleeper fit" }
     ],
     stats: [
-      { value: "$16.6B", label: "TAM" },
-      { value: "254%", label: "IRR" },
-      { value: "$79.99", label: "Price" },
-      { value: "4 in 10", label: "Adults with sleep issues" }
+      { value: "$16.6B", label: "TAM (Global Sleep Tech)" },
+      { value: "$2.3B", label: "SAM (Addressable Segment)" },
+      { value: "$115M", label: "SOM (5% Target)" },
+      { value: "68%", label: "Gross Margin" },
+      { value: "$53M", label: "Year 1 Revenue" },
+      { value: "$151M", label: "Year 5 Projection" },
+      { value: "662K", label: "Units Year 1" },
+      { value: "30%", label: "YoY Growth Rate" }
     ],
     type: "image" as const
   }
@@ -122,15 +126,15 @@ const ProjectsSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.25 }}
                   viewport={{ once: true }}
-                  className="grid grid-cols-2 md:grid-cols-4 gap-4"
+                  className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3"
                 >
                   {project.stats.map((stat, i) => (
                     <div
                       key={i}
-                      className="bg-primary/10 rounded-lg p-4 text-center border border-primary/20"
+                      className="bg-primary/10 rounded-lg p-3 text-center border border-primary/20"
                     >
-                      <p className="text-2xl font-bold text-primary">{stat.value}</p>
-                      <p className="text-xs text-muted-foreground mt-1">{stat.label}</p>
+                      <p className="text-lg md:text-xl font-bold text-primary">{stat.value}</p>
+                      <p className="text-[10px] md:text-xs text-muted-foreground mt-1 leading-tight">{stat.label}</p>
                     </div>
                   ))}
                 </motion.div>
