@@ -7,6 +7,7 @@ import EducationSection from "@/components/sections/EducationSection";
 import ConferencesSection from "@/components/sections/ConferencesSection";
 import SkillsSection from "@/components/sections/SkillsSection";
 import ExperienceSection from "@/components/sections/ExperienceSection";
+import StatsDashboard from "@/components/sections/StatsDashboard";
 import ContactSection from "@/components/sections/ContactSection";
 
 const Index = () => {
@@ -22,6 +23,7 @@ const Index = () => {
         <ConferencesSection />
         <SkillsSection />
         <ExperienceSection />
+        <StatsDashboard />
         <ContactSection />
       </main>
     </div>
