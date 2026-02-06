@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { Bot, Search, Users, Mail, Moon, Volume2, Vibrate, Eye } from "lucide-react";
+import { Bot, Search, Users, Mail, Moon, Volume2, Vibrate, Eye, BarChart3, Target, ClipboardCheck, MessageSquare, TrendingUp, FileText } from "lucide-react";
 import slumbrProduct from "@/assets/slumbr-product.jpg";
-
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 const projects = [
   {
     title: "AI-Powered GTM Engine",
@@ -50,6 +50,50 @@ const projects = [
       { value: "$151M", label: "Year 5 Projection" },
       { value: "662K", label: "Units Year 1" },
       { value: "30%", label: "YoY Growth Rate" }
+    ],
+    methodologies: [
+      {
+        id: "market-research",
+        label: "Market Research",
+        icon: BarChart3,
+        title: "Primary & Secondary Research",
+        content: "Conducted extensive market analysis of the $16.6B global sleep tech industry. Analyzed competitor positioning, pricing strategies, and feature gaps across 50+ existing products. Identified key market trends including rising demand for non-pharmacological sleep solutions."
+      },
+      {
+        id: "tam-sam-som",
+        label: "TAM/SAM/SOM",
+        icon: Target,
+        title: "Market Sizing Framework",
+        content: "TAM: $16.6B (global sleep tech devices). SAM: $2.3B (smart/AI-enhanced sleep masks & adjacencies). SOM: $115M (5% of SAM as long-term target). Used bottom-up validation with unit economics at $79.99 price point."
+      },
+      {
+        id: "stakeholder",
+        label: "Stakeholder Analysis",
+        icon: Users,
+        title: "Stakeholder Mapping",
+        content: "Mapped key stakeholders including end consumers (sleep-deprived adults 25-45), retail partners (Amazon, specialty wellness stores), manufacturing partners (Shenzhen electronics), and potential investors. Created influence-interest matrix for prioritization."
+      },
+      {
+        id: "voc",
+        label: "Voice of Customer",
+        icon: MessageSquare,
+        title: "Customer Research & Surveys",
+        content: "Conducted 50+ customer interviews and surveys to identify pain points: light leakage (78%), earbud discomfort (65%), partner disturbance from alarms (52%). Synthesized insights into QFD matrix to prioritize features."
+      },
+      {
+        id: "validation",
+        label: "Market Validation",
+        icon: ClipboardCheck,
+        title: "Concept Testing",
+        content: "Validated product concept through landing page tests achieving 12% email capture rate. Conducted conjoint analysis to optimize feature bundle. Price sensitivity testing confirmed $79.99 as optimal price point balancing margin and volume."
+      },
+      {
+        id: "financials",
+        label: "Financial Model",
+        icon: TrendingUp,
+        title: "5-Year Projections",
+        content: "Built comprehensive financial model: Year 1 revenue $53M (662K units), scaling to $151M by Year 5 at 30% YoY growth. 68% gross margin ($54/unit on $25 COGS). Projected 254% IRR with break-even in Month 8."
+      }
     ],
     type: "image" as const
   }
@@ -118,6 +162,51 @@ const ProjectsSection = () => {
                   </div>
                 ) : null}
               </motion.div>
+
+              {/* Methodologies Section (for projects with methodologies) */}
+              {"methodologies" in project && project.methodologies && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.25 }}
+                  viewport={{ once: true }}
+                  className="bg-card rounded-xl border border-border overflow-hidden"
+                >
+                  <div className="p-4 border-b border-border">
+                    <h4 className="text-lg font-semibold font-heading text-foreground flex items-center gap-2">
+                      <FileText className="w-5 h-5 text-primary" />
+                      What I Did — Product Development Process
+                    </h4>
+                  </div>
+                  <Tabs defaultValue={project.methodologies[0].id} className="w-full">
+                    <TabsList className="w-full justify-start rounded-none border-b border-border bg-muted/30 h-auto flex-wrap p-1 gap-1">
+                      {project.methodologies.map((method) => (
+                        <TabsTrigger
+                          key={method.id}
+                          value={method.id}
+                          className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-md px-3 py-2 text-xs md:text-sm flex items-center gap-1.5"
+                        >
+                          <method.icon className="w-3.5 h-3.5" />
+                          <span className="hidden sm:inline">{method.label}</span>
+                        </TabsTrigger>
+                      ))}
+                    </TabsList>
+                    {project.methodologies.map((method) => (
+                      <TabsContent key={method.id} value={method.id} className="p-6 m-0">
+                        <div className="flex items-start gap-4">
+                          <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                            <method.icon className="w-6 h-6 text-primary" />
+                          </div>
+                          <div>
+                            <h5 className="font-semibold text-foreground mb-2">{method.title}</h5>
+                            <p className="text-muted-foreground leading-relaxed">{method.content}</p>
+                          </div>
+                        </div>
+                      </TabsContent>
+                    ))}
+                  </Tabs>
+                </motion.div>
+              )}
 
               {/* Stats Row (for projects with stats) */}
               {"stats" in project && project.stats && (
