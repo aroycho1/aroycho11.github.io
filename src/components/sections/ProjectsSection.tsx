@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Bot, Search, Users, Mail } from "lucide-react";
+import { Bot, Search, Users, Mail, Moon, Volume2, Vibrate, Eye } from "lucide-react";
+import slumbrProduct from "@/assets/slumbr-product.jpg";
 
 const projects = [
   {
@@ -7,18 +8,46 @@ const projects = [
     description: "Built an intelligent Go-To-Market engine that automates lead discovery, enrichment, and outreach strategy using AI-driven signals and data pipelines.",
     loomEmbed: "https://www.loom.com/embed/11b25f7bc8bd4f8ab91d2ca8b3e27425",
     purpose: "Streamline the entire GTM process by automating signal detection, company research, technographic enrichment, and decision-maker identification—reducing manual prospecting time by 80%.",
-    aiTools: [
+    tools: [
       "LinkedIn Operator for automated job posting scraping",
       "AI-powered company research & technographic analysis",
       "Automated decision-maker identification pipeline",
       "Intelligent outreach strategy generation"
     ],
+    toolsLabel: "AI Tools & Techniques",
     highlights: [
       { icon: Search, label: "Signal Detection", desc: "Hiring trends & SSO roadmap signals" },
       { icon: Bot, label: "Data Enrichment", desc: "Automated company research" },
       { icon: Users, label: "Decision Makers", desc: "AI-identified key contacts" },
       { icon: Mail, label: "Outreach", desc: "Personalized strategy generation" }
-    ]
+    ],
+    type: "video" as const
+  },
+  {
+    title: "Slumbr — Smart Sleep Mask",
+    description: "Designed and pitched a next-generation smart sleep mask for a Product Development class, featuring bone conduction audio, haptic alarms, and C-shaped blackout cups.",
+    image: slumbrProduct,
+    purpose: "Address the $16.6B sleep tech market where 4 in 10 adults report sleep difficulties and 72% feel sleepy multiple days per week. Slumbr delivers total blackout, personalized audio, and silent alarms—all in one comfortable mask priced at $79.99.",
+    tools: [
+      "Quality Function Deployment (QFD) analysis",
+      "Voice of Customer research & synthesis",
+      "Stakeholder mapping & market sizing (TAM/SAM/SOM)",
+      "Financial modeling with 254% IRR projection"
+    ],
+    toolsLabel: "Product Development Methods",
+    highlights: [
+      { icon: Moon, label: "Blackout Cups", desc: "C-shaped, zero temple pressure" },
+      { icon: Volume2, label: "Bone Conduction", desc: "Private audio, no earbuds" },
+      { icon: Vibrate, label: "Silent Alarm", desc: "Haptic wake, partner sleeps on" },
+      { icon: Eye, label: "Premium Comfort", desc: "Washable silk, side-sleeper fit" }
+    ],
+    stats: [
+      { value: "$16.6B", label: "TAM" },
+      { value: "254%", label: "IRR" },
+      { value: "$79.99", label: "Price" },
+      { value: "4 in 10", label: "Adults with sleep issues" }
+    ],
+    type: "image" as const
   }
 ];
 
@@ -57,7 +86,7 @@ const ProjectsSection = () => {
                 </p>
               </div>
 
-              {/* Video Embed */}
+              {/* Video or Image */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -65,18 +94,49 @@ const ProjectsSection = () => {
                 viewport={{ once: true }}
                 className="relative rounded-xl overflow-hidden shadow-2xl bg-card border border-border"
               >
-                <div className="aspect-video">
-                  <iframe
-                    src={project.loomEmbed}
-                    frameBorder="0"
-                    allowFullScreen
-                    className="w-full h-full"
-                    title={project.title}
-                  />
-                </div>
+                {project.type === "video" && project.loomEmbed ? (
+                  <div className="aspect-video">
+                    <iframe
+                      src={project.loomEmbed}
+                      frameBorder="0"
+                      allowFullScreen
+                      className="w-full h-full"
+                      title={project.title}
+                    />
+                  </div>
+                ) : project.image ? (
+                  <div className="aspect-video">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ) : null}
               </motion.div>
 
-              {/* Purpose & AI Tools Grid */}
+              {/* Stats Row (for projects with stats) */}
+              {"stats" in project && project.stats && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.25 }}
+                  viewport={{ once: true }}
+                  className="grid grid-cols-2 md:grid-cols-4 gap-4"
+                >
+                  {project.stats.map((stat, i) => (
+                    <div
+                      key={i}
+                      className="bg-primary/10 rounded-lg p-4 text-center border border-primary/20"
+                    >
+                      <p className="text-2xl font-bold text-primary">{stat.value}</p>
+                      <p className="text-xs text-muted-foreground mt-1">{stat.label}</p>
+                    </div>
+                  ))}
+                </motion.div>
+              )}
+
+              {/* Purpose & Tools Grid */}
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Purpose */}
                 <motion.div
@@ -95,7 +155,7 @@ const ProjectsSection = () => {
                   </p>
                 </motion.div>
 
-                {/* AI Tools Used */}
+                {/* Tools Used */}
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -105,10 +165,10 @@ const ProjectsSection = () => {
                 >
                   <h4 className="text-lg font-semibold font-heading text-foreground mb-3 flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-secondary" />
-                    AI Tools & Techniques
+                    {project.toolsLabel}
                   </h4>
                   <ul className="space-y-2">
-                    {project.aiTools.map((tool, i) => (
+                    {project.tools.map((tool, i) => (
                       <li key={i} className="text-muted-foreground text-sm flex items-start gap-2">
                         <span className="text-primary mt-1">→</span>
                         {tool}
