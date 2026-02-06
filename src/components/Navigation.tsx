@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import aristotleImg from "@/assets/aristotle.jpg";
 
 const navItems = [
   { label: "Projects", href: "#projects" },
@@ -37,9 +38,13 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           <a 
             href="#" 
-            className="font-heading text-xl font-semibold text-foreground hover:text-primary transition-colors"
+            className="hover:opacity-80 transition-opacity"
           >
-            YN
+            <img 
+              src={aristotleImg} 
+              alt="Aristotle" 
+              className="w-10 h-10 rounded-full object-cover"
+            />
           </a>
 
           <div className="hidden md:flex items-center gap-8">
