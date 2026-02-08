@@ -9,6 +9,12 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import {
   BarChart,
   Bar,
   XAxis,
@@ -22,7 +28,7 @@ import {
   Area,
   AreaChart,
 } from "recharts";
-import { TrendingUp, Users, DollarSign, Target, Zap, Building } from "lucide-react";
+import { TrendingUp, Users, DollarSign, Target, Zap, Building, Info } from "lucide-react";
 
 const pipelineData = [
   { name: "Q1", value: 0.45, fill: "hsl(var(--primary))" },
@@ -65,6 +71,7 @@ const kpiCards = [
     icon: Target,
     description: "DriveX Network",
     color: "text-chart-1",
+    tooltip: "Total qualified sales pipeline built through outbound prospecting, Clay automation, and strategic account targeting over 4 quarters.",
   },
   {
     title: "Revenue Generated",
@@ -73,6 +80,7 @@ const kpiCards = [
     icon: DollarSign,
     description: "Combined Impact",
     color: "text-chart-2",
+    tooltip: "Cumulative revenue impact across Unacademy's Iconic program expansion and Sunya IAS institutional sales.",
   },
   {
     title: "Subscribers Added",
@@ -81,6 +89,7 @@ const kpiCards = [
     icon: Users,
     description: "Unacademy",
     color: "text-chart-3",
+    tooltip: "New paid subscribers acquired through the Iconic subscription program launch and retention optimization strategies.",
   },
   {
     title: "Institutional Clients",
@@ -89,6 +98,7 @@ const kpiCards = [
     icon: Building,
     description: "Sunya IAS",
     color: "text-chart-4",
+    tooltip: "Coaching institutes, colleges, and educational institutions onboarded through B2B go-to-market strategy.",
   },
   {
     title: "Satisfaction Lift",
@@ -97,6 +107,7 @@ const kpiCards = [
     icon: TrendingUp,
     description: "Unacademy",
     color: "text-chart-5",
+    tooltip: "Customer satisfaction score improvement achieved through learner success interventions and support process optimization.",
   },
   {
     title: "Pipeline Boost",
@@ -105,6 +116,7 @@ const kpiCards = [
     icon: Zap,
     description: "DriveX Network",
     color: "text-primary",
+    tooltip: "Incremental pipeline growth from implementing Clay for automated lead enrichment and personalized outreach sequences.",
   },
 ];
 
@@ -153,14 +165,24 @@ const StatsDashboard = () => {
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.4, delay: 0.1 * index }}
             >
-              <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
-                <CardContent className="p-4">
-                  <kpi.icon className={`w-5 h-5 ${kpi.color} mb-2`} />
-                  <p className="text-2xl font-bold text-foreground">{kpi.value}</p>
-                  <p className="text-xs text-primary font-medium">{kpi.change}</p>
-                  <p className="text-xs text-muted-foreground mt-1">{kpi.description}</p>
-                </CardContent>
-              </Card>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 cursor-help">
+                      <CardContent className="p-4 relative">
+                        <Info className="w-3 h-3 text-muted-foreground/50 absolute top-2 right-2" />
+                        <kpi.icon className={`w-5 h-5 ${kpi.color} mb-2`} />
+                        <p className="text-2xl font-bold text-foreground">{kpi.value}</p>
+                        <p className="text-xs text-primary font-medium">{kpi.change}</p>
+                        <p className="text-xs text-muted-foreground mt-1">{kpi.description}</p>
+                      </CardContent>
+                    </Card>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom" className="max-w-xs text-center">
+                    <p className="text-sm">{kpi.tooltip}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </motion.div>
           ))}
         </motion.div>
@@ -180,6 +202,9 @@ const StatsDashboard = () => {
             </TabsList>
 
             <TabsContent value="overview" className="space-y-6">
+              <p className="text-sm text-muted-foreground text-center mb-4">
+                Key performance metrics from GTM and growth roles at DriveX Network, Unacademy, and Sunya IAS (2022-2024)
+              </p>
               <div className="grid md:grid-cols-2 gap-6">
                 <Card className="bg-card/50 backdrop-blur-sm border-border/50">
                   <CardHeader>
@@ -187,6 +212,9 @@ const StatsDashboard = () => {
                       <Target className="w-5 h-5 text-primary" />
                       Pipeline Growth (DriveX)
                     </CardTitle>
+                    <p className="text-xs text-muted-foreground">
+                      Outbound sales pipeline built through strategic prospecting and Clay automation
+                    </p>
                   </CardHeader>
                   <CardContent>
                     <ChartContainer config={chartConfig} className="h-[200px] w-full">
@@ -198,7 +226,7 @@ const StatsDashboard = () => {
                       </BarChart>
                     </ChartContainer>
                     <p className="text-sm text-muted-foreground mt-2 text-center">
-                      Quarterly qualified pipeline build ($M)
+                      Quarterly qualified pipeline build ($M) — Q4 spike from Clay implementation
                     </p>
                   </CardContent>
                 </Card>
@@ -209,6 +237,9 @@ const StatsDashboard = () => {
                       <Users className="w-5 h-5 text-chart-3" />
                       Subscriber Growth (Unacademy)
                     </CardTitle>
+                    <p className="text-xs text-muted-foreground">
+                      Paid subscribers acquired through Iconic program launch and retention optimization
+                    </p>
                   </CardHeader>
                   <CardContent>
                     <ChartContainer config={chartConfig} className="h-[200px] w-full">
@@ -226,7 +257,7 @@ const StatsDashboard = () => {
                       </AreaChart>
                     </ChartContainer>
                     <p className="text-sm text-muted-foreground mt-2 text-center">
-                      Iconic program subscriber acquisition
+                      8-month subscriber acquisition curve — steady growth through program expansion
                     </p>
                   </CardContent>
                 </Card>
@@ -234,10 +265,16 @@ const StatsDashboard = () => {
             </TabsContent>
 
             <TabsContent value="pipeline" className="space-y-6">
+              <p className="text-sm text-muted-foreground text-center mb-4">
+                Sales pipeline metrics from DriveX Network and Sunya IAS — built through outbound, inbound, and partnership channels
+              </p>
               <div className="grid md:grid-cols-2 gap-6">
                 <Card className="bg-card/50 backdrop-blur-sm border-border/50">
                   <CardHeader>
                     <CardTitle className="text-lg">Customer Segment Distribution</CardTitle>
+                    <p className="text-xs text-muted-foreground">
+                      Split between institutional B2B clients and B2C subscription pipeline at Sunya IAS
+                    </p>
                   </CardHeader>
                   <CardContent>
                     <ChartContainer config={chartConfig} className="h-[250px] w-full">
@@ -275,6 +312,9 @@ const StatsDashboard = () => {
                 <Card className="bg-card/50 backdrop-blur-sm border-border/50">
                   <CardHeader>
                     <CardTitle className="text-lg">Pipeline Metrics</CardTitle>
+                    <p className="text-xs text-muted-foreground">
+                      Key sales metrics from GTM initiatives at DriveX Network
+                    </p>
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <div className="space-y-3">
@@ -282,6 +322,7 @@ const StatsDashboard = () => {
                         <span className="text-muted-foreground">Total Pipeline</span>
                         <span className="text-2xl font-bold text-foreground">$2.35M</span>
                       </div>
+                      <p className="text-xs text-muted-foreground/70">Cumulative qualified pipeline over 4 quarters</p>
                       <div className="h-2 bg-muted rounded-full overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
@@ -296,6 +337,7 @@ const StatsDashboard = () => {
                         <span className="text-muted-foreground">Pipeline Increase (Clay)</span>
                         <span className="text-2xl font-bold text-chart-1">+20%</span>
                       </div>
+                      <p className="text-xs text-muted-foreground/70">Lift from automated lead enrichment & outreach</p>
                       <div className="h-2 bg-muted rounded-full overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
@@ -310,6 +352,7 @@ const StatsDashboard = () => {
                         <span className="text-muted-foreground">B2B Clients Acquired</span>
                         <span className="text-2xl font-bold text-chart-2">30+</span>
                       </div>
+                      <p className="text-xs text-muted-foreground/70">Coaching institutes & colleges at Sunya IAS</p>
                       <div className="h-2 bg-muted rounded-full overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
@@ -325,6 +368,9 @@ const StatsDashboard = () => {
             </TabsContent>
 
             <TabsContent value="growth" className="space-y-6">
+              <p className="text-sm text-muted-foreground text-center mb-4">
+                Revenue and growth metrics demonstrating impact on top-line business outcomes
+              </p>
               <div className="grid md:grid-cols-2 gap-6">
                 <Card className="bg-card/50 backdrop-blur-sm border-border/50">
                   <CardHeader>
@@ -332,6 +378,9 @@ const StatsDashboard = () => {
                       <TrendingUp className="w-5 h-5 text-chart-1" />
                       Revenue Growth Comparison
                     </CardTitle>
+                    <p className="text-xs text-muted-foreground">
+                      Year-over-year revenue trajectory across two EdTech companies
+                    </p>
                   </CardHeader>
                   <CardContent>
                     <ChartContainer config={chartConfig} className="h-[200px] w-full">
@@ -359,20 +408,23 @@ const StatsDashboard = () => {
                 <Card className="bg-card/50 backdrop-blur-sm border-border/50">
                   <CardHeader>
                     <CardTitle className="text-lg">Growth Highlights</CardTitle>
+                    <p className="text-xs text-muted-foreground">
+                      Key revenue milestones achieved through GTM and growth initiatives
+                    </p>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="p-4 rounded-lg bg-chart-1/10 border border-chart-1/20">
                       <p className="text-3xl font-bold text-chart-1">45%</p>
                       <p className="text-sm text-muted-foreground">YoY Revenue Growth at Sunya IAS</p>
                       <p className="text-xs text-muted-foreground/70 mt-1">
-                        Through integrated demand generation & institutional GTM
+                        Achieved through integrated demand generation, institutional GTM, and B2B partnership development
                       </p>
                     </div>
                     <div className="p-4 rounded-lg bg-chart-2/10 border border-chart-2/20">
                       <p className="text-3xl font-bold text-chart-2">$1.5M</p>
                       <p className="text-sm text-muted-foreground">Revenue Generated at Unacademy</p>
                       <p className="text-xs text-muted-foreground/70 mt-1">
-                        Iconic subscription program expansion
+                        Through Iconic subscription program expansion and learner success optimization
                       </p>
                     </div>
                   </CardContent>
@@ -381,6 +433,9 @@ const StatsDashboard = () => {
             </TabsContent>
 
             <TabsContent value="engagement" className="space-y-6">
+              <p className="text-sm text-muted-foreground text-center mb-4">
+                Customer engagement and satisfaction metrics from learner success initiatives
+              </p>
               <div className="grid md:grid-cols-2 gap-6">
                 <Card className="bg-card/50 backdrop-blur-sm border-border/50">
                   <CardHeader>
@@ -388,6 +443,9 @@ const StatsDashboard = () => {
                       <TrendingUp className="w-5 h-5 text-chart-4" />
                       Customer Satisfaction Improvement
                     </CardTitle>
+                    <p className="text-xs text-muted-foreground">
+                      CSAT score improvement through learner success programs at Unacademy
+                    </p>
                   </CardHeader>
                   <CardContent>
                     <ChartContainer config={chartConfig} className="h-[200px] w-full">
@@ -399,7 +457,7 @@ const StatsDashboard = () => {
                       </BarChart>
                     </ChartContainer>
                     <p className="text-sm text-muted-foreground mt-2 text-center">
-                      +30% CSAT improvement at Unacademy
+                      Score indexed: Before (70) → After (100) intervention programs
                     </p>
                   </CardContent>
                 </Card>
@@ -407,24 +465,31 @@ const StatsDashboard = () => {
                 <Card className="bg-card/50 backdrop-blur-sm border-border/50">
                   <CardHeader>
                     <CardTitle className="text-lg">Engagement Metrics</CardTitle>
+                    <p className="text-xs text-muted-foreground">
+                      Key engagement KPIs across all roles
+                    </p>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div className="text-center p-4 rounded-lg bg-muted/30">
                         <p className="text-3xl font-bold text-foreground">5,000+</p>
                         <p className="text-xs text-muted-foreground">New Subscribers</p>
+                        <p className="text-[10px] text-muted-foreground/60 mt-1">Iconic program</p>
                       </div>
                       <div className="text-center p-4 rounded-lg bg-muted/30">
                         <p className="text-3xl font-bold text-foreground">30+</p>
                         <p className="text-xs text-muted-foreground">B2B Institutions</p>
+                        <p className="text-[10px] text-muted-foreground/60 mt-1">Sunya IAS GTM</p>
                       </div>
                       <div className="text-center p-4 rounded-lg bg-muted/30">
                         <p className="text-3xl font-bold text-foreground">+30%</p>
                         <p className="text-xs text-muted-foreground">CSAT Lift</p>
+                        <p className="text-[10px] text-muted-foreground/60 mt-1">Learner success</p>
                       </div>
                       <div className="text-center p-4 rounded-lg bg-muted/30">
                         <p className="text-3xl font-bold text-foreground">+20%</p>
                         <p className="text-xs text-muted-foreground">Pipeline Boost</p>
+                        <p className="text-[10px] text-muted-foreground/60 mt-1">Clay automation</p>
                       </div>
                     </div>
                   </CardContent>
