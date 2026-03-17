@@ -4,9 +4,13 @@ import aristotleImg from "@/assets/aristotle.jpg";
 
 const HeroSection = () => {
   return <section className="section-container relative overflow-hidden">
-      <div 
-        className="absolute inset-0 bg-cover bg-center opacity-10"
-        style={{ backgroundImage: `url(${aristotleImg})` }}
+      <motion.img 
+        src={aristotleImg} 
+        alt="Aristotle" 
+        className="absolute right-12 top-1/2 -translate-y-1/2 w-48 h-48 rounded-full object-cover shadow-lg border-4 border-border"
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
       />
       <div className="max-w-4xl mx-auto text-center">
         <motion.div initial={{
