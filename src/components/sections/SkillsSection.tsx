@@ -23,6 +23,10 @@ const skillCategories = [
     category: "Design & Prototyping",
     skills: ["Canva", "Figma"],
   },
+  {
+    category: "AI & Development Tools",
+    skills: ["Lovable", "Replit", "Claude Code"],
+  },
 ];
 
 const SkillsSection = () => {
