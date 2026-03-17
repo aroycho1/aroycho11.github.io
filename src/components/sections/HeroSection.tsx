@@ -7,7 +7,7 @@ const HeroSection = () => {
       <motion.img 
         src={aristotleImg} 
         alt="Aristotle" 
-        className="absolute right-12 top-1/2 -translate-y-1/2 w-48 h-48 rounded-full object-cover shadow-lg border-4 border-border"
+        className="absolute right-12 top-24 w-48 h-48 rounded-full object-cover shadow-lg border-4 border-border"
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
