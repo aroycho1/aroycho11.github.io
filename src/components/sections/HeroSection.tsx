@@ -1,7 +1,13 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import aristotleImg from "@/assets/aristotle.jpg";
+
 const HeroSection = () => {
-  return <section className="section-container relative">
+  return <section className="section-container relative overflow-hidden">
+      <div 
+        className="absolute inset-0 bg-cover bg-center opacity-10"
+        style={{ backgroundImage: `url(${aristotleImg})` }}
+      />
       <div className="max-w-4xl mx-auto text-center">
         <motion.div initial={{
         opacity: 0,
