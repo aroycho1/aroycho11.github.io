@@ -182,6 +182,16 @@ const projects = [
         content: "Entire system designed, built, and demoed in under 4 hours using Lovable, n8n, Google Sheets, Gmail, and Google Apps Script. Demonstrates ability to ship production-ready operational systems rapidly with low-code tools a non-technical team can maintain."
       }
     ],
+    stats: [
+      { value: "67%", label: "Reduction in Processing Time" },
+      { value: "100%", label: "Duplicate Detection Rate" },
+      { value: "0", label: "Workflow Violations Post-Launch" },
+      { value: "100%", label: "Vendor Acknowledgment Rate" },
+      { value: "3hrs", label: "Built End-to-End" },
+      { value: "0%→100%", label: "Invoice Visibility for BizOps" },
+      { value: "2-3 days", label: "Avg Processing Time (was 8-12)" },
+      { value: "85%", label: "Reduction in Manual Follow-ups" }
+    ],
     type: "video" as const,
     tileIcon: Receipt,
     tileColor: "from-amber-500/20 to-orange-500/20"
