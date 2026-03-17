@@ -13,7 +13,7 @@ const skillCategories = [
   },
   {
     category: "Automation & Workflow",
-    skills: ["Zapier", "Asana"],
+    skills: ["n8n", "Zapier", "Asana"],
   },
   {
     category: "Funnel Metrics",
