@@ -65,13 +65,13 @@ const satisfactionData = [
 
 const kpiCards = [
   {
-    title: "Qualified Pipeline",
-    value: "$2.35M",
-    change: "+20%",
+    title: "Combined Impact",
+    value: "$3.85M+",
+    change: "Pipeline + Revenue",
     icon: Target,
-    description: "DriveX Network",
+    description: "Across Roles",
     color: "text-chart-1",
-    tooltip: "Total qualified sales pipeline built through outbound prospecting, Clay automation, and strategic account targeting over 4 quarters.",
+    tooltip: "Total combined pipeline and revenue impact across DriveX Network, Unacademy, and Sunya IAS.",
   },
   {
     title: "Revenue Generated",
@@ -110,13 +110,13 @@ const kpiCards = [
     tooltip: "Customer satisfaction score improvement achieved through learner success interventions and support process optimization.",
   },
   {
-    title: "Pipeline Boost",
+    title: "Efficiency Boost",
     value: "+20%",
     change: "Clay Automation",
     icon: Zap,
-    description: "DriveX Network",
+    description: "Overall",
     color: "text-primary",
-    tooltip: "Incremental pipeline growth from implementing Clay for automated lead enrichment and personalized outreach sequences.",
+    tooltip: "Overall operational efficiency gain from integrating Clay for automated lead enrichment and personalized outreach sequences.",
   },
 ];
 
