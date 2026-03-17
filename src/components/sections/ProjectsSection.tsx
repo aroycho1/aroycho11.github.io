@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Bot, Search, Users, Mail, Moon, Volume2, Vibrate, Eye, BarChart3, Target, ClipboardCheck, MessageSquare, TrendingUp, FileText, GraduationCap, Sparkles, BookOpen, Wrench, ExternalLink } from "lucide-react";
+import { Bot, Search, Users, Mail, Moon, Volume2, Vibrate, Eye, BarChart3, Target, ClipboardCheck, MessageSquare, TrendingUp, FileText, GraduationCap, Sparkles, BookOpen, Wrench, ExternalLink, Receipt, ShieldCheck, Bell, AlertTriangle, CheckCircle, Workflow, Clock, Archive } from "lucide-react";
 import slumbrProduct from "@/assets/slumbr-product.jpg";
 import gptHigherEdVideo from "@/assets/gpt-higher-ed-video.mp4";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -126,6 +126,65 @@ const projects = [
     type: "local-video" as const,
     tileIcon: GraduationCap,
     tileColor: "from-emerald-500/20 to-teal-500/20"
+  },
+  {
+    title: "Waffles University — Invoice Management System",
+    description: "A full end-to-end invoice management system built to replace a passive, broken process with an active, automated workflow. Built as a take-home assignment for a BizOps Associate role at an edtech startup.",
+    loomEmbed: "https://www.loom.com/embed/7dfad8a83d634a92bf5b6e9aa2477025",
+    purpose: "To solve 7 core operational problems in an invoice management process — from duplicate detection to approval routing to overdue alerts — using low-code tools that a non-technical team could maintain from day one.",
+    tools: [
+      "Lovable for vendor intake form with validation",
+      "n8n for workflow automation & orchestration",
+      "Google Sheets as lightweight database & approval hub",
+      "Gmail & Google Apps Script for notifications & triggers"
+    ],
+    toolsLabel: "Tech Stack & Tools",
+    highlights: [
+      { icon: ShieldCheck, label: "Duplicate Detection", desc: "Hard-block & soft-flag warnings" },
+      { icon: Workflow, label: "Approval Routing", desc: "Rules engine by vendor & amount" },
+      { icon: Bell, label: "Overdue Alerts", desc: "25 & 30 day threshold notifications" },
+      { icon: Archive, label: "Email Archive", desc: "Redundant record independent of Sheets" }
+    ],
+    methodologies: [
+      {
+        id: "problems",
+        label: "Problems Solved",
+        icon: AlertTriangle,
+        title: "7 Core Operational Problems",
+        content: "Duplicate invoices slipping through undetected. Workflow violations from new vendors bypassing approval. Missing vendor information causing processing delays. Approved but unpaid invoices sitting idle. No vendor acknowledgment on submission. No structured approval routing. No overdue payment alerts."
+      },
+      {
+        id: "intake",
+        label: "Vendor Intake",
+        icon: ClipboardCheck,
+        title: "Smart Intake Form",
+        content: "Built a vendor intake form with hard-block duplicate detection (exact invoice number matches) and soft-flag warnings (same vendor + similar amount within 30 days). Ensures missing information doesn't cause downstream delays."
+      },
+      {
+        id: "approval",
+        label: "Approval Engine",
+        icon: CheckCircle,
+        title: "Intelligent Approval Routing",
+        content: "Designed a rules engine that routes invoices based on vendor status (new vs. existing) and invoice amount thresholds. New vendors require additional review. One-click approval trigger via Google Apps Script button directly in the sheet."
+      },
+      {
+        id: "automation",
+        label: "Automation",
+        icon: Workflow,
+        title: "End-to-End Workflow Automation",
+        content: "Automated vendor confirmation emails on every submission. Auto sheet updates and BizOps team notifications on approval. Daily overdue alerts at 25 and 30 day thresholds. Archive email record independent of Google Sheets for redundancy."
+      },
+      {
+        id: "speed",
+        label: "Execution Speed",
+        icon: Clock,
+        title: "Built in Under 4 Hours",
+        content: "Entire system designed, built, and demoed in under 4 hours using Lovable, n8n, Google Sheets, Gmail, and Google Apps Script. Demonstrates ability to ship production-ready operational systems rapidly with low-code tools a non-technical team can maintain."
+      }
+    ],
+    type: "video" as const,
+    tileIcon: Receipt,
+    tileColor: "from-amber-500/20 to-orange-500/20"
   }
 ];
 
