@@ -209,8 +209,8 @@ const StatsDashboard = () => {
                 <Card className="bg-card/50 backdrop-blur-sm border-border/50">
                   <CardHeader>
                     <CardTitle className="text-lg flex items-center gap-2">
-                      <Target className="w-5 h-5 text-primary" />
-                      Pipeline Growth (DriveX)
+                       <Target className="w-5 h-5 text-primary" />
+                       Pipeline Growth
                     </CardTitle>
                     <p className="text-xs text-muted-foreground">
                       Outbound sales pipeline built through strategic prospecting and Clay automation
