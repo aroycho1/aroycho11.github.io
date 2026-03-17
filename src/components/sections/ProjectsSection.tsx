@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Bot, Search, Users, Mail, Moon, Volume2, Vibrate, Eye, BarChart3, Target, ClipboardCheck, MessageSquare, TrendingUp, FileText, GraduationCap, Sparkles, BookOpen, Wrench, ExternalLink } from "lucide-react";
+import { Bot, Search, Users, Mail, Moon, Volume2, Vibrate, Eye, BarChart3, Target, ClipboardCheck, MessageSquare, TrendingUp, FileText, GraduationCap, Sparkles, BookOpen, Wrench, ExternalLink, Receipt, ShieldCheck, Bell, AlertTriangle, CheckCircle, Workflow, Clock, Archive } from "lucide-react";
 import slumbrProduct from "@/assets/slumbr-product.jpg";
 import gptHigherEdVideo from "@/assets/gpt-higher-ed-video.mp4";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
