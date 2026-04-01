@@ -368,6 +368,28 @@ const ProjectCard = ({ project, isExpanded, onToggle, index }: { project: Projec
               </div>
               )}
 
+              {/* Screenshots */}
+              {"screenshots" in project && project.screenshots && (
+                <div className="grid gap-3">
+                  {project.screenshots.map((shot, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1 + i * 0.1 }}
+                      className="rounded-lg overflow-hidden border border-border shadow-md"
+                    >
+                      <img
+                        src={shot.src}
+                        alt={shot.alt}
+                        className="w-full h-auto object-cover"
+                        loading="lazy"
+                      />
+                    </motion.div>
+                  ))}
+                </div>
+              )}
+
               {/* Highlights Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {project.highlights.map((highlight, i) => (
