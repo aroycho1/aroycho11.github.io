@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Bot, Search, Users, Mail, Moon, Volume2, Vibrate, Eye, BarChart3, Target, ClipboardCheck, MessageSquare, TrendingUp, FileText, GraduationCap, Sparkles, BookOpen, Wrench, Receipt, ShieldCheck, Bell, AlertTriangle, CheckCircle, Workflow, Clock, Archive, ChevronDown, X } from "lucide-react";
+import { Bot, Search, Users, Mail, Moon, Volume2, Vibrate, Eye, BarChart3, Target, ClipboardCheck, MessageSquare, TrendingUp, FileText, GraduationCap, Sparkles, BookOpen, Wrench, Receipt, ShieldCheck, Bell, AlertTriangle, CheckCircle, Workflow, Clock, Archive, ChevronDown, X, Brain, UserCheck, RefreshCw, Activity, ExternalLink } from "lucide-react";
 import slumbrProduct from "@/assets/slumbr-product.jpg";
 import gptHigherEdVideo from "@/assets/gpt-higher-ed-video.mp4";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -198,6 +198,36 @@ const projects = [
     tileIcon: Receipt,
     tileColor: "from-amber-500/20 to-orange-500/20",
     accentColor: "bg-amber-500"
+  },
+  {
+    title: "Account Intelligence Hub",
+    description: "An AI-powered account scoring tool built for GTM teams — qualifies new logos, surfaces migration opportunities, flags renewal risk, and grades pipeline health in real time.",
+    purpose: "Equip GTM teams with real-time account intelligence to prioritize the right accounts, reduce churn, and accelerate pipeline velocity — all from a single dashboard.",
+    tools: [
+      "React frontend with real-time scoring UI",
+      "n8n for workflow orchestration & data pipelines",
+      "Apollo for contact & company enrichment",
+      "Claude AI for intelligent account analysis"
+    ],
+    toolsLabel: "Tech Stack & Tools",
+    highlights: [
+      { icon: RefreshCw, label: "Migration Intel", desc: "Scores competitor migration likelihood" },
+      { icon: UserCheck, label: "New Logo Qualifier", desc: "Scores prospects against ICP criteria" },
+      { icon: AlertTriangle, label: "Renewal Risk Scanner", desc: "Assesses churn signals for accounts" },
+      { icon: Activity, label: "Pipeline Health Grader", desc: "Grades deals and flags risk" }
+    ],
+    poweredBy: [
+      { name: "React", icon: "⚛️" },
+      { name: "n8n", icon: "⚡" },
+      { name: "Apollo", icon: "🚀" },
+      { name: "Claude AI", icon: "🤖" },
+      { name: "Google Sheets", icon: "📊" }
+    ],
+    liveAppUrl: "https://account-insight-enginev1-aroycho1.replit.app/",
+    type: "none" as const,
+    tileIcon: Brain,
+    tileColor: "from-rose-500/20 to-red-500/20",
+    accentColor: "bg-rose-500"
   }
 ];
 
@@ -280,6 +310,7 @@ const ProjectCard = ({ project, isExpanded, onToggle, index }: { project: Projec
           >
             <div className="p-6 space-y-6">
               {/* Media */}
+              {project.type !== "none" && (
               <div className="rounded-lg overflow-hidden border border-border shadow-md">
                 {project.type === "local-video" && "videoSrc" in project ? (
                   <div className="aspect-video">
@@ -310,6 +341,7 @@ const ProjectCard = ({ project, isExpanded, onToggle, index }: { project: Projec
                   </div>
                 ) : null}
               </div>
+              )}
 
               {/* Highlights Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -427,6 +459,51 @@ const ProjectCard = ({ project, isExpanded, onToggle, index }: { project: Projec
                   </ul>
                 </motion.div>
               </div>
+
+              {/* Powered By */}
+              {"poweredBy" in project && project.poweredBy && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.35 }}
+                  className="space-y-2"
+                >
+                  <h4 className="text-sm font-semibold font-heading text-foreground flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    Powered By
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {project.poweredBy.map((tool, i) => (
+                      <span
+                        key={i}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/60 border border-border/50 text-sm text-foreground"
+                      >
+                        <span>{tool.icon}</span>
+                        {tool.name}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* CTA Button */}
+              {"liveAppUrl" in project && project.liveAppUrl && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <a
+                    href={project.liveAppUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    View Live App
+                  </a>
+                </motion.div>
+              )}
             </div>
           </motion.div>
         )}
