@@ -3,6 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Bot, Search, Users, Mail, Moon, Volume2, Vibrate, Eye, BarChart3, Target, ClipboardCheck, MessageSquare, TrendingUp, FileText, GraduationCap, Sparkles, BookOpen, Wrench, Receipt, ShieldCheck, Bell, AlertTriangle, CheckCircle, Workflow, Clock, Archive, ChevronDown, X, Brain, UserCheck, RefreshCw, Activity, ExternalLink } from "lucide-react";
 import slumbrProduct from "@/assets/slumbr-product.jpg";
 import gptHigherEdVideo from "@/assets/gpt-higher-ed-video.mp4";
+import reactLogo from "@/assets/logos/react-logo.png";
+import n8nLogo from "@/assets/logos/n8n-logo.png";
+import apolloLogo from "@/assets/logos/apollo-logo.png";
+import claudeLogo from "@/assets/logos/claude-logo.png";
+import googleSheetsLogo from "@/assets/logos/google-sheets-logo.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const projects = [
@@ -217,11 +222,25 @@ const projects = [
       { icon: Activity, label: "Pipeline Health Grader", desc: "Grades deals and flags risk" }
     ],
     poweredBy: [
-      { name: "React", icon: "⚛️" },
-      { name: "n8n", icon: "⚡" },
-      { name: "Apollo", icon: "🚀" },
-      { name: "Claude AI", icon: "🤖" },
-      { name: "Google Sheets", icon: "📊" }
+      { name: "React", logo: reactLogo },
+      { name: "n8n", logo: n8nLogo },
+      { name: "Apollo", logo: apolloLogo },
+      { name: "Claude AI", logo: claudeLogo },
+      { name: "Google Sheets", logo: googleSheetsLogo }
+    ],
+    whoCanUse: [
+      { icon: Users, label: "SDR / BDR Teams", desc: "Prioritize outbound with scored account lists" },
+      { icon: Target, label: "Account Executives", desc: "Focus on highest-conversion opportunities" },
+      { icon: TrendingUp, label: "Revenue Ops", desc: "Monitor pipeline health & forecast accuracy" },
+      { icon: ShieldCheck, label: "CS / Retention Teams", desc: "Catch churn risk before it's too late" }
+    ],
+    improvements: [
+      "Lead qualification speed — from hours to seconds",
+      "Pipeline visibility — real-time deal risk scoring",
+      "Churn prevention — early warning on renewal risk",
+      "Migration targeting — data-driven competitor displacement",
+      "ICP alignment — consistent scoring across reps",
+      "Forecast accuracy — grounded in account signals, not gut feel"
     ],
     liveAppUrl: "https://account-insight-enginev1-aroycho1.replit.app/",
     type: "none" as const,
@@ -476,11 +495,66 @@ const ProjectCard = ({ project, isExpanded, onToggle, index }: { project: Projec
                     {project.poweredBy.map((tool, i) => (
                       <span
                         key={i}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/60 border border-border/50 text-sm text-foreground"
+                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted/60 border border-border/50 text-sm text-foreground"
                       >
-                        <span>{tool.icon}</span>
+                        {"logo" in tool && <img src={tool.logo} alt={tool.name} className="w-5 h-5 object-contain rounded-sm" loading="lazy" />}
                         {tool.name}
                       </span>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Who Can Use It */}
+              {"whoCanUse" in project && project.whoCanUse && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.38 }}
+                  className="rounded-lg border border-border overflow-hidden"
+                >
+                  <div className="p-4 border-b border-border bg-muted/20">
+                    <h4 className="text-base font-semibold font-heading text-foreground flex items-center gap-2">
+                      <Users className="w-4 h-4 text-primary" />
+                      Who Can Use It?
+                    </h4>
+                  </div>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-4">
+                    {project.whoCanUse.map((persona, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4 + i * 0.05 }}
+                        className="bg-muted/50 rounded-lg p-3 text-center border border-border/50"
+                      >
+                        <persona.icon className="w-5 h-5 text-primary mx-auto mb-1.5" />
+                        <p className="text-sm font-medium text-foreground">{persona.label}</p>
+                        <p className="text-xs text-muted-foreground mt-0.5">{persona.desc}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* What It Improves */}
+              {"improvements" in project && project.improvements && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.42 }}
+                  className="bg-muted/30 rounded-lg p-5 border border-border/50"
+                >
+                  <h4 className="text-sm font-semibold font-heading text-foreground mb-3 flex items-center gap-2">
+                    <TrendingUp className="w-4 h-4 text-primary" />
+                    What It Improves
+                  </h4>
+                  <div className="grid sm:grid-cols-2 gap-2">
+                    {project.improvements.map((item, i) => (
+                      <div key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        {item}
+                      </div>
                     ))}
                   </div>
                 </motion.div>
