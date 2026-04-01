@@ -3,6 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Bot, Search, Users, Mail, Moon, Volume2, Vibrate, Eye, BarChart3, Target, ClipboardCheck, MessageSquare, TrendingUp, FileText, GraduationCap, Sparkles, BookOpen, Wrench, Receipt, ShieldCheck, Bell, AlertTriangle, CheckCircle, Workflow, Clock, Archive, ChevronDown, X, Brain, UserCheck, RefreshCw, Activity, ExternalLink } from "lucide-react";
 import slumbrProduct from "@/assets/slumbr-product.jpg";
 import gptHigherEdVideo from "@/assets/gpt-higher-ed-video.mp4";
+import reactLogo from "@/assets/logos/react-logo.png";
+import n8nLogo from "@/assets/logos/n8n-logo.png";
+import apolloLogo from "@/assets/logos/apollo-logo.png";
+import claudeLogo from "@/assets/logos/claude-logo.png";
+import googleSheetsLogo from "@/assets/logos/google-sheets-logo.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const projects = [
