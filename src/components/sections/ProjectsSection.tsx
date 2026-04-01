@@ -198,6 +198,36 @@ const projects = [
     tileIcon: Receipt,
     tileColor: "from-amber-500/20 to-orange-500/20",
     accentColor: "bg-amber-500"
+  },
+  {
+    title: "Account Intelligence Hub",
+    description: "An AI-powered account scoring tool built for GTM teams — qualifies new logos, surfaces migration opportunities, flags renewal risk, and grades pipeline health in real time.",
+    purpose: "Equip GTM teams with real-time account intelligence to prioritize the right accounts, reduce churn, and accelerate pipeline velocity — all from a single dashboard.",
+    tools: [
+      "React frontend with real-time scoring UI",
+      "n8n for workflow orchestration & data pipelines",
+      "Apollo for contact & company enrichment",
+      "Claude AI for intelligent account analysis"
+    ],
+    toolsLabel: "Tech Stack & Tools",
+    highlights: [
+      { icon: RefreshCw, label: "Migration Intel", desc: "Scores competitor migration likelihood" },
+      { icon: UserCheck, label: "New Logo Qualifier", desc: "Scores prospects against ICP criteria" },
+      { icon: AlertTriangle, label: "Renewal Risk Scanner", desc: "Assesses churn signals for accounts" },
+      { icon: Activity, label: "Pipeline Health Grader", desc: "Grades deals and flags risk" }
+    ],
+    poweredBy: [
+      { name: "React", icon: "⚛️" },
+      { name: "n8n", icon: "⚡" },
+      { name: "Apollo", icon: "🚀" },
+      { name: "Claude AI", icon: "🤖" },
+      { name: "Google Sheets", icon: "📊" }
+    ],
+    liveAppUrl: "https://account-insight-enginev1-aroycho1.replit.app/",
+    type: "none" as const,
+    tileIcon: Brain,
+    tileColor: "from-rose-500/20 to-red-500/20",
+    accentColor: "bg-rose-500"
   }
 ];
 
