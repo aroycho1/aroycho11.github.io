@@ -30,7 +30,7 @@ const ConferencesSection = () => {
   });
 
   return (
-    <section id="conferences" className="section-container !min-h-0 !py-16">
+    <section id="conferences" className="section-container">
       <div className="max-w-4xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}

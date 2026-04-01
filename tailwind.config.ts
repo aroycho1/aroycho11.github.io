@@ -59,6 +59,7 @@ export default {
         },
       },
       fontFamily: {
+        heading: ['Playfair Display', 'serif'],
         body: ['Inter', 'sans-serif'],
       },
       borderRadius: {
