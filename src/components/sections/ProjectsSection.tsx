@@ -245,6 +245,10 @@ const projects = [
       "Forecast accuracy — grounded in account signals, not gut feel"
     ],
     liveAppUrl: "https://account-insight-enginev1-aroycho1.replit.app/",
+    screenshots: [
+      { src: accountHubModes, alt: "Analysis mode selection — Migration Intel, New Logo Qualifier, Renewal Risk Scanner, Pipeline Health" },
+      { src: accountHubResults, alt: "Account scoring results — Top signals, conversation angle, SFDC summary" }
+    ],
     type: "none" as const,
     tileIcon: Brain,
     tileColor: "from-rose-500/20 to-red-500/20",
