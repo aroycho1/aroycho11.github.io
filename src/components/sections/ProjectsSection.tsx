@@ -222,11 +222,25 @@ const projects = [
       { icon: Activity, label: "Pipeline Health Grader", desc: "Grades deals and flags risk" }
     ],
     poweredBy: [
-      { name: "React", icon: "⚛️" },
-      { name: "n8n", icon: "⚡" },
-      { name: "Apollo", icon: "🚀" },
-      { name: "Claude AI", icon: "🤖" },
-      { name: "Google Sheets", icon: "📊" }
+      { name: "React", logo: reactLogo },
+      { name: "n8n", logo: n8nLogo },
+      { name: "Apollo", logo: apolloLogo },
+      { name: "Claude AI", logo: claudeLogo },
+      { name: "Google Sheets", logo: googleSheetsLogo }
+    ],
+    whoCanUse: [
+      { icon: Users, label: "SDR / BDR Teams", desc: "Prioritize outbound with scored account lists" },
+      { icon: Target, label: "Account Executives", desc: "Focus on highest-conversion opportunities" },
+      { icon: TrendingUp, label: "Revenue Ops", desc: "Monitor pipeline health & forecast accuracy" },
+      { icon: ShieldCheck, label: "CS / Retention Teams", desc: "Catch churn risk before it's too late" }
+    ],
+    improvements: [
+      "Lead qualification speed — from hours to seconds",
+      "Pipeline visibility — real-time deal risk scoring",
+      "Churn prevention — early warning on renewal risk",
+      "Migration targeting — data-driven competitor displacement",
+      "ICP alignment — consistent scoring across reps",
+      "Forecast accuracy — grounded in account signals, not gut feel"
     ],
     liveAppUrl: "https://account-insight-enginev1-aroycho1.replit.app/",
     type: "none" as const,
