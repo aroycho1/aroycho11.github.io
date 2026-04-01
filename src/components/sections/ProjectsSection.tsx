@@ -8,6 +8,8 @@ import n8nLogo from "@/assets/logos/n8n-logo.png";
 import apolloLogo from "@/assets/logos/apollo-logo.png";
 import claudeLogo from "@/assets/logos/claude-logo.png";
 import googleSheetsLogo from "@/assets/logos/google-sheets-logo.png";
+import accountHubResults from "@/assets/account-hub-results.png";
+import accountHubModes from "@/assets/account-hub-modes.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const projects = [
@@ -243,6 +245,10 @@ const projects = [
       "Forecast accuracy — grounded in account signals, not gut feel"
     ],
     liveAppUrl: "https://account-insight-enginev1-aroycho1.replit.app/",
+    screenshots: [
+      { src: accountHubModes, alt: "Analysis mode selection — Migration Intel, New Logo Qualifier, Renewal Risk Scanner, Pipeline Health" },
+      { src: accountHubResults, alt: "Account scoring results — Top signals, conversation angle, SFDC summary" }
+    ],
     type: "none" as const,
     tileIcon: Brain,
     tileColor: "from-rose-500/20 to-red-500/20",
@@ -360,6 +366,28 @@ const ProjectCard = ({ project, isExpanded, onToggle, index }: { project: Projec
                   </div>
                 ) : null}
               </div>
+              )}
+
+              {/* Screenshots */}
+              {"screenshots" in project && project.screenshots && (
+                <div className="grid gap-3">
+                  {project.screenshots.map((shot, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1 + i * 0.1 }}
+                      className="rounded-lg overflow-hidden border border-border shadow-md"
+                    >
+                      <img
+                        src={shot.src}
+                        alt={shot.alt}
+                        className="w-full h-auto object-cover"
+                        loading="lazy"
+                      />
+                    </motion.div>
+                  ))}
+                </div>
               )}
 
               {/* Highlights Grid */}
