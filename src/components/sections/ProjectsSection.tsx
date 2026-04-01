@@ -495,11 +495,66 @@ const ProjectCard = ({ project, isExpanded, onToggle, index }: { project: Projec
                     {project.poweredBy.map((tool, i) => (
                       <span
                         key={i}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/60 border border-border/50 text-sm text-foreground"
+                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted/60 border border-border/50 text-sm text-foreground"
                       >
-                        <span>{tool.icon}</span>
+                        {"logo" in tool && <img src={tool.logo} alt={tool.name} className="w-5 h-5 object-contain rounded-sm" loading="lazy" />}
                         {tool.name}
                       </span>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Who Can Use It */}
+              {"whoCanUse" in project && project.whoCanUse && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.38 }}
+                  className="rounded-lg border border-border overflow-hidden"
+                >
+                  <div className="p-4 border-b border-border bg-muted/20">
+                    <h4 className="text-base font-semibold font-heading text-foreground flex items-center gap-2">
+                      <Users className="w-4 h-4 text-primary" />
+                      Who Can Use It?
+                    </h4>
+                  </div>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-4">
+                    {project.whoCanUse.map((persona, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4 + i * 0.05 }}
+                        className="bg-muted/50 rounded-lg p-3 text-center border border-border/50"
+                      >
+                        <persona.icon className="w-5 h-5 text-primary mx-auto mb-1.5" />
+                        <p className="text-sm font-medium text-foreground">{persona.label}</p>
+                        <p className="text-xs text-muted-foreground mt-0.5">{persona.desc}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* What It Improves */}
+              {"improvements" in project && project.improvements && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.42 }}
+                  className="bg-muted/30 rounded-lg p-5 border border-border/50"
+                >
+                  <h4 className="text-sm font-semibold font-heading text-foreground mb-3 flex items-center gap-2">
+                    <TrendingUp className="w-4 h-4 text-primary" />
+                    What It Improves
+                  </h4>
+                  <div className="grid sm:grid-cols-2 gap-2">
+                    {project.improvements.map((item, i) => (
+                      <div key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        {item}
+                      </div>
                     ))}
                   </div>
                 </motion.div>
