@@ -459,6 +459,51 @@ const ProjectCard = ({ project, isExpanded, onToggle, index }: { project: Projec
                   </ul>
                 </motion.div>
               </div>
+
+              {/* Powered By */}
+              {"poweredBy" in project && project.poweredBy && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.35 }}
+                  className="space-y-2"
+                >
+                  <h4 className="text-sm font-semibold font-heading text-foreground flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    Powered By
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {project.poweredBy.map((tool, i) => (
+                      <span
+                        key={i}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/60 border border-border/50 text-sm text-foreground"
+                      >
+                        <span>{tool.icon}</span>
+                        {tool.name}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* CTA Button */}
+              {"liveAppUrl" in project && project.liveAppUrl && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <a
+                    href={project.liveAppUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    View Live App
+                  </a>
+                </motion.div>
+              )}
             </div>
           </motion.div>
         )}
