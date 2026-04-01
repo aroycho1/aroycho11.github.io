@@ -310,6 +310,7 @@ const ProjectCard = ({ project, isExpanded, onToggle, index }: { project: Projec
           >
             <div className="p-6 space-y-6">
               {/* Media */}
+              {project.type !== "none" && (
               <div className="rounded-lg overflow-hidden border border-border shadow-md">
                 {project.type === "local-video" && "videoSrc" in project ? (
                   <div className="aspect-video">
@@ -340,6 +341,7 @@ const ProjectCard = ({ project, isExpanded, onToggle, index }: { project: Projec
                   </div>
                 ) : null}
               </div>
+              )}
 
               {/* Highlights Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
