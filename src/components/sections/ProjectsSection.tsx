@@ -370,7 +370,7 @@ const ProjectCard = ({ project, isExpanded, onToggle, index }: { project: Projec
 
               {/* Screenshots */}
               {"screenshots" in project && project.screenshots && (
-                <div className="grid gap-3">
+                <div className="grid grid-cols-2 gap-3">
                   {project.screenshots.map((shot, i) => (
                     <motion.div
                       key={i}
