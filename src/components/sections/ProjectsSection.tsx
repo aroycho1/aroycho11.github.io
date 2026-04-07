@@ -338,6 +338,7 @@ const projects = [
     tileColor: "from-indigo-500/20 to-violet-500/20",
     accentColor: "bg-indigo-500"
   }
+];
 
 type Project = typeof projects[0];
 
