@@ -256,8 +256,88 @@ const projects = [
     tileIcon: Brain,
     tileColor: "from-rose-500/20 to-red-500/20",
     accentColor: "bg-rose-500"
+  },
+  {
+    title: "Automated Personalized Outbound System",
+    description: "Built a fully automated AI-powered sales outreach system for a company specializing in school safety — taking prospects from Apollo discovery to a personalized 3-email sequence with zero manual writing.",
+    purpose: "Eliminate manual prospecting and email writing by automating the entire outbound pipeline. Claude AI researches each prospect, builds a strategic intelligence report, and writes unique personalized emails based on role, company, and pain points — processing contacts at ~$0.01 each.",
+    tools: [
+      "Apollo.io for prospect discovery & export",
+      "HubSpot CRM for contact management & email sequences",
+      "Vercel-hosted Node.js pipelines for enrichment & generation",
+      "Claude AI for research & personalized email writing"
+    ],
+    toolsLabel: "Tech Stack & Tools",
+    highlights: [
+      { icon: Search, label: "Prospect Discovery", desc: "Apollo-powered lead sourcing" },
+      { icon: Brain, label: "AI Research", desc: "Full strategic intelligence per contact" },
+      { icon: Mail, label: "Email Generation", desc: "3 unique personalized emails per prospect" },
+      { icon: Workflow, label: "Zero-Touch Pipeline", desc: "Fully automated end-to-end flow" }
+    ],
+    poweredBy: [
+      { name: "Apollo", logo: apolloLogo },
+      { name: "HubSpot", logo: hubspotLogo },
+      { name: "Vercel", logo: vercelLogo },
+      { name: "Claude AI", logo: claudeLogo },
+      { name: "Node.js", logo: nodejsLogo }
+    ],
+    whoCanUse: [
+      { icon: Send, label: "SDR / BDR Teams", desc: "Launch personalized outbound at scale" },
+      { icon: Target, label: "Account Executives", desc: "Receive pre-researched, ready-to-send sequences" },
+      { icon: Layers, label: "Sales Ops / RevOps", desc: "Manage pipeline automation & throughput" },
+      { icon: TrendingUp, label: "Sales Leaders", desc: "Scale outbound without scaling headcount" }
+    ],
+    improvements: [
+      "Email personalization — from generic templates to AI-crafted sequences",
+      "Prospecting speed — research + emails in seconds, not hours",
+      "Cost efficiency — ~$0.01 per fully researched contact",
+      "Rep productivity — zero manual writing, focus on closing",
+      "Sequence quality — unique hooks, angles & case studies per prospect",
+      "Pipeline velocity — automated handoff from discovery to outreach"
+    ],
+    methodologies: [
+      {
+        id: "pipeline-1",
+        label: "Enricher Pipeline",
+        icon: Database,
+        title: "Pipeline 1 — AI Research & Enrichment",
+        content: "Reads contacts from the enrichment queue, calls Claude AI with contact name, title, and company. Claude writes a full strategic intelligence report including scope level, persona type, pain points, recommended products, case study selection, tone strategy, and email-by-email guidance. Saves to HubSpot."
+      },
+      {
+        id: "pipeline-2",
+        label: "Email Generator",
+        icon: Mail,
+        title: "Pipeline 2 — Personalized Email Sequences",
+        content: "Reads the research summary from Pipeline 1, sends it to Claude AI which writes 3 unique personalized emails following the strategic guidance. Each email has a different hook, angle, and case study reference. Saves subjects and bodies to 6 separate HubSpot fields."
+      },
+      {
+        id: "hubspot-setup",
+        label: "CRM Automation",
+        icon: Workflow,
+        title: "HubSpot Workflows & Sequences",
+        content: "Automated workflows handle queue management: new contacts auto-add to enrichment queue, enriched contacts auto-move to email generation queue. Final 3-email sequence deploys on Day 1, Day 3, and Day 7 — including calendar link in the closing email."
+      },
+      {
+        id: "results",
+        label: "Outcomes",
+        icon: Zap,
+        title: "Impact & Results",
+        content: "Reduced outbound prep time from 30+ minutes per contact to near-zero. Every email is uniquely personalized — no templates, no copy-paste. System processes contacts at ~$0.01 each, making hyper-personalized outbound economically viable at any scale."
+      }
+    ],
+    stats: [
+      { value: "$0.01", label: "Cost Per Contact" },
+      { value: "3", label: "Unique Emails Per Prospect" },
+      { value: "0 min", label: "Manual Writing Required" },
+      { value: "8 Steps", label: "Fully Automated Pipeline" },
+      { value: "100%", label: "Personalization Rate" },
+      { value: "Day 1→7", label: "Automated Sequence Cadence" }
+    ],
+    type: "none" as const,
+    tileIcon: Send,
+    tileColor: "from-indigo-500/20 to-violet-500/20",
+    accentColor: "bg-indigo-500"
   }
-];
 
 type Project = typeof projects[0];
 
