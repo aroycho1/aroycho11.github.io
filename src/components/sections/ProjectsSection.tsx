@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Bot, Search, Users, Mail, Moon, Volume2, Vibrate, Eye, BarChart3, Target, ClipboardCheck, MessageSquare, TrendingUp, FileText, GraduationCap, Sparkles, BookOpen, Wrench, Receipt, ShieldCheck, Bell, AlertTriangle, CheckCircle, Workflow, Clock, Archive, ChevronDown, X, Brain, UserCheck, RefreshCw, Activity, ExternalLink, Zap, Database, Send, Layers } from "lucide-react";
+import { Bot, Search, Users, Mail, Moon, Volume2, Vibrate, Eye, BarChart3, Target, ClipboardCheck, MessageSquare, TrendingUp, FileText, GraduationCap, Sparkles, BookOpen, Wrench, Receipt, ShieldCheck, Bell, AlertTriangle, CheckCircle, Workflow, Clock, Archive, ChevronDown, X, Brain, UserCheck, RefreshCw, Activity, ExternalLink, Zap, Database, Send, Layers, Terminal, Code2 } from "lucide-react";
 import slumbrProduct from "@/assets/slumbr-product.jpg";
 import gptHigherEdVideo from "@/assets/gpt-higher-ed-video.mp4";
 import reactLogo from "@/assets/logos/react-logo.png";
@@ -11,6 +11,9 @@ import googleSheetsLogo from "@/assets/logos/google-sheets-logo.png";
 import hubspotLogo from "@/assets/logos/hubspot-logo.png";
 import vercelLogo from "@/assets/logos/vercel-logo.png";
 import nodejsLogo from "@/assets/logos/nodejs-logo.png";
+import openaiLogo from "@/assets/logos/openai-logo.png";
+import lovableLogo from "@/assets/logos/lovable-logo.png";
+import gmailLogo from "@/assets/logos/gmail-logo.png";
 import accountHubResults from "@/assets/account-hub-results.png";
 import accountHubModes from "@/assets/account-hub-modes.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -33,6 +36,12 @@ const projects = [
       { icon: Bot, label: "Data Enrichment", desc: "Automated company research" },
       { icon: Users, label: "Decision Makers", desc: "AI-identified key contacts" },
       { icon: Mail, label: "Outreach", desc: "Personalized strategy generation" }
+    ],
+    poweredBy: [
+      { name: "Apollo", logo: apolloLogo },
+      { name: "Claude Code", logo: claudeLogo },
+      { name: "Vercel", logo: vercelLogo },
+      { name: "Node.js", logo: nodejsLogo }
     ],
     type: "video" as const,
     tileIcon: Bot,
@@ -134,6 +143,10 @@ const projects = [
       { icon: BookOpen, label: "Learning Centers", desc: "Enhanced student support" },
       { icon: Wrench, label: "Educator Tools", desc: "Practical implementation" }
     ],
+    poweredBy: [
+      { name: "OpenAI", logo: openaiLogo },
+      { name: "Claude Code", logo: claudeLogo }
+    ],
     type: "local-video" as const,
     tileIcon: GraduationCap,
     tileColor: "from-emerald-500/20 to-teal-500/20",
@@ -156,6 +169,12 @@ const projects = [
       { icon: Workflow, label: "Approval Routing", desc: "Rules engine by vendor & amount" },
       { icon: Bell, label: "Overdue Alerts", desc: "25 & 30 day threshold notifications" },
       { icon: Archive, label: "Email Archive", desc: "Redundant record independent of Sheets" }
+    ],
+    poweredBy: [
+      { name: "Lovable", logo: lovableLogo },
+      { name: "n8n", logo: n8nLogo },
+      { name: "Google Sheets", logo: googleSheetsLogo },
+      { name: "Gmail", logo: gmailLogo }
     ],
     methodologies: [
       {
@@ -217,7 +236,7 @@ const projects = [
       "React frontend with real-time scoring UI",
       "n8n for workflow orchestration & data pipelines",
       "Apollo for contact & company enrichment",
-      "Claude AI for intelligent account analysis"
+      "Claude Code for intelligent account analysis"
     ],
     toolsLabel: "Tech Stack & Tools",
     highlights: [
@@ -230,7 +249,7 @@ const projects = [
       { name: "React", logo: reactLogo },
       { name: "n8n", logo: n8nLogo },
       { name: "Apollo", logo: apolloLogo },
-      { name: "Claude AI", logo: claudeLogo },
+      { name: "Claude Code", logo: claudeLogo },
       { name: "Google Sheets", logo: googleSheetsLogo }
     ],
     whoCanUse: [
@@ -260,12 +279,12 @@ const projects = [
   {
     title: "Automated Personalized Outbound System",
     description: "Built a fully automated AI-powered sales outreach system for a company specializing in school safety — taking prospects from Apollo discovery to a personalized 3-email sequence with zero manual writing.",
-    purpose: "Eliminate manual prospecting and email writing by automating the entire outbound pipeline. Claude AI researches each prospect, builds a strategic intelligence report, and writes unique personalized emails based on role, company, and pain points — processing contacts at ~$0.01 each.",
+    purpose: "Eliminate manual prospecting and email writing by automating the entire outbound pipeline. Claude Code researches each prospect, builds a strategic intelligence report, and writes unique personalized emails based on role, company, and pain points — processing contacts at ~$0.01 each.",
     tools: [
       "Apollo.io for prospect discovery & export",
       "HubSpot CRM for contact management & email sequences",
       "Vercel-hosted Node.js pipelines for enrichment & generation",
-      "Claude AI for research & personalized email writing"
+      "Claude Code for research & personalized email writing"
     ],
     toolsLabel: "Tech Stack & Tools",
     highlights: [
@@ -278,7 +297,7 @@ const projects = [
       { name: "Apollo", logo: apolloLogo },
       { name: "HubSpot", logo: hubspotLogo },
       { name: "Vercel", logo: vercelLogo },
-      { name: "Claude AI", logo: claudeLogo },
+      { name: "Claude Code", logo: claudeLogo },
       { name: "Node.js", logo: nodejsLogo }
     ],
     whoCanUse: [
@@ -301,14 +320,14 @@ const projects = [
         label: "Enricher Pipeline",
         icon: Database,
         title: "Pipeline 1 — AI Research & Enrichment",
-        content: "Reads contacts from the enrichment queue, calls Claude AI with contact name, title, and company. Claude writes a full strategic intelligence report including scope level, persona type, pain points, recommended products, case study selection, tone strategy, and email-by-email guidance. Saves to HubSpot."
+        content: "Reads contacts from the enrichment queue, calls Claude Code with contact name, title, and company. Claude writes a full strategic intelligence report including scope level, persona type, pain points, recommended products, case study selection, tone strategy, and email-by-email guidance. Saves to HubSpot."
       },
       {
         id: "pipeline-2",
         label: "Email Generator",
         icon: Mail,
         title: "Pipeline 2 — Personalized Email Sequences",
-        content: "Reads the research summary from Pipeline 1, sends it to Claude AI which writes 3 unique personalized emails following the strategic guidance. Each email has a different hook, angle, and case study reference. Saves subjects and bodies to 6 separate HubSpot fields."
+        content: "Reads the research summary from Pipeline 1, sends it to Claude Code which writes 3 unique personalized emails following the strategic guidance. Each email has a different hook, angle, and case study reference. Saves subjects and bodies to 6 separate HubSpot fields."
       },
       {
         id: "hubspot-setup",
@@ -318,11 +337,11 @@ const projects = [
         content: "Automated workflows handle queue management: new contacts auto-add to enrichment queue, enriched contacts auto-move to email generation queue. Final 3-email sequence deploys on Day 1, Day 3, and Day 7 — including calendar link in the closing email."
       },
       {
-        id: "results",
+        id: "outcomes",
         label: "Outcomes",
-        icon: Zap,
-        title: "Impact & Results",
-        content: "Reduced outbound prep time from 30+ minutes per contact to near-zero. Every email is uniquely personalized — no templates, no copy-paste. System processes contacts at ~$0.01 each, making hyper-personalized outbound economically viable at any scale."
+        icon: TrendingUp,
+        title: "Results & Impact",
+        content: "Each contact is fully researched and receives 3 unique, personalized emails — all at ~$0.01 per contact. Zero manual writing required. Pipeline runs autonomously from Apollo export to HubSpot sequence enrollment."
       }
     ],
     stats: [
@@ -364,22 +383,45 @@ const ProjectCard = ({ project, isExpanded, onToggle, index }: { project: Projec
         className={`relative cursor-pointer bg-gradient-to-br ${project.tileColor} group`}
       >
         <div className="absolute inset-0 bg-card/80 backdrop-blur-sm" />
-        <div className="relative p-6 flex items-start justify-between gap-4">
+        {/* Subtle grid pattern overlay for technical feel */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: 'linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)',
+          backgroundSize: '20px 20px'
+        }} />
+        <div className="relative p-5 flex items-start justify-between gap-4">
           <div className="flex items-start gap-4 flex-1 min-w-0">
-            <div className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors duration-300 ${
-              isExpanded ? "bg-primary/20" : "bg-primary/10 group-hover:bg-primary/20"
+            <div className={`w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors duration-300 border ${
+              isExpanded ? "bg-primary/20 border-primary/30" : "bg-primary/10 border-primary/20 group-hover:bg-primary/20"
             }`}>
-              <project.tileIcon className="w-6 h-6 text-primary" />
+              <project.tileIcon className="w-5 h-5 text-primary" />
             </div>
             <div className="min-w-0">
-              <h3 className={`text-lg font-semibold font-heading transition-colors duration-300 ${
-                isExpanded ? "text-primary" : "text-foreground group-hover:text-primary"
-              }`}>
-                {project.title}
-              </h3>
-              <p className={`text-sm text-muted-foreground mt-1 ${isExpanded ? "" : "line-clamp-2"}`}>
+              <div className="flex items-center gap-2 mb-0.5">
+                <h3 className={`text-base font-semibold font-heading transition-colors duration-300 ${
+                  isExpanded ? "text-primary" : "text-foreground group-hover:text-primary"
+                }`}>
+                  {project.title}
+                </h3>
+              </div>
+              <p className={`text-sm text-muted-foreground mt-0.5 ${isExpanded ? "" : "line-clamp-2"}`}>
                 {project.description}
               </p>
+
+              {/* Tech stack logos — always visible on tile */}
+              {"poweredBy" in project && project.poweredBy && (
+                <div className="flex items-center gap-1.5 mt-3">
+                  <Terminal className="w-3 h-3 text-muted-foreground/50 mr-0.5" />
+                  {project.poweredBy.map((tool, i) => (
+                    <div
+                      key={i}
+                      className="w-6 h-6 rounded-md bg-muted/60 border border-border/60 flex items-center justify-center"
+                      title={tool.name}
+                    >
+                      <img src={tool.logo} alt={tool.name} className="w-4 h-4 object-contain" loading="lazy" />
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
           <motion.div
@@ -397,9 +439,9 @@ const ProjectCard = ({ project, isExpanded, onToggle, index }: { project: Projec
 
         {/* Highlights bar — compact preview when collapsed */}
         {!isExpanded && (
-          <div className="relative px-6 pb-4 flex gap-3 overflow-x-auto">
+          <div className="relative px-5 pb-4 flex gap-3 overflow-x-auto">
             {project.highlights.slice(0, 4).map((h, i) => (
-              <div key={i} className="flex items-center gap-1.5 text-xs text-muted-foreground whitespace-nowrap">
+              <div key={i} className="flex items-center gap-1.5 text-xs text-muted-foreground whitespace-nowrap font-mono">
                 <h.icon className="w-3.5 h-3.5 text-primary/70" />
                 <span>{h.label}</span>
               </div>
@@ -486,7 +528,7 @@ const ProjectCard = ({ project, isExpanded, onToggle, index }: { project: Projec
                     className="bg-muted/50 rounded-lg p-3 text-center border border-border/50"
                   >
                     <highlight.icon className="w-5 h-5 text-primary mx-auto mb-1.5" />
-                    <p className="text-sm font-medium text-foreground">{highlight.label}</p>
+                    <p className="text-sm font-medium text-foreground font-mono">{highlight.label}</p>
                     <p className="text-xs text-muted-foreground mt-0.5">{highlight.desc}</p>
                   </motion.div>
                 ))}
@@ -502,7 +544,7 @@ const ProjectCard = ({ project, isExpanded, onToggle, index }: { project: Projec
                 >
                   <div className="p-4 border-b border-border bg-muted/20">
                     <h4 className="text-base font-semibold font-heading text-foreground flex items-center gap-2">
-                      <FileText className="w-4 h-4 text-primary" />
+                      <Code2 className="w-4 h-4 text-primary" />
                       What I Did
                     </h4>
                   </div>
@@ -512,7 +554,7 @@ const ProjectCard = ({ project, isExpanded, onToggle, index }: { project: Projec
                         <TabsTrigger
                           key={method.id}
                           value={method.id}
-                          className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-md px-3 py-1.5 text-xs flex items-center gap-1.5 transition-all"
+                          className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-md px-3 py-1.5 text-xs flex items-center gap-1.5 transition-all font-mono"
                         >
                           <method.icon className="w-3.5 h-3.5" />
                           <span className="hidden sm:inline">{method.label}</span>
@@ -522,11 +564,11 @@ const ProjectCard = ({ project, isExpanded, onToggle, index }: { project: Projec
                     {project.methodologies.map((method) => (
                       <TabsContent key={method.id} value={method.id} className="p-5 m-0">
                         <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 border border-primary/20">
                             <method.icon className="w-5 h-5 text-primary" />
                           </div>
                           <div>
-                            <h5 className="font-semibold text-foreground mb-1 text-sm">{method.title}</h5>
+                            <h5 className="font-semibold text-foreground mb-1 text-sm font-mono">{method.title}</h5>
                             <p className="text-muted-foreground text-sm leading-relaxed">{method.content}</p>
                           </div>
                         </div>
@@ -547,7 +589,7 @@ const ProjectCard = ({ project, isExpanded, onToggle, index }: { project: Projec
                       transition={{ delay: 0.15 + i * 0.03 }}
                       className="bg-primary/5 rounded-lg p-3 text-center border border-primary/10"
                     >
-                      <p className="text-base md:text-lg font-bold text-primary">{stat.value}</p>
+                      <p className="text-base md:text-lg font-bold text-primary font-mono">{stat.value}</p>
                       <p className="text-[10px] md:text-xs text-muted-foreground mt-0.5 leading-tight">{stat.label}</p>
                     </motion.div>
                   ))}
@@ -583,7 +625,7 @@ const ProjectCard = ({ project, isExpanded, onToggle, index }: { project: Projec
                   </h4>
                   <ul className="space-y-1.5">
                     {project.tools.map((tool, i) => (
-                      <li key={i} className="text-muted-foreground text-sm flex items-start gap-2">
+                      <li key={i} className="text-muted-foreground text-sm flex items-start gap-2 font-mono">
                         <span className="text-primary mt-0.5">→</span>
                         {tool}
                       </li>
@@ -592,25 +634,25 @@ const ProjectCard = ({ project, isExpanded, onToggle, index }: { project: Projec
                 </motion.div>
               </div>
 
-              {/* Powered By */}
+              {/* Powered By — expanded detail view */}
               {"poweredBy" in project && project.poweredBy && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.35 }}
-                  className="space-y-2"
+                  className="rounded-lg border border-border/50 bg-muted/20 p-4"
                 >
-                  <h4 className="text-sm font-semibold font-heading text-foreground flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    Powered By
+                  <h4 className="text-sm font-semibold font-heading text-foreground flex items-center gap-2 mb-3">
+                    <Terminal className="w-4 h-4 text-primary" />
+                    Tech Stack
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {project.poweredBy.map((tool, i) => (
                       <span
                         key={i}
-                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted/60 border border-border/50 text-sm text-foreground"
+                        className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-card border border-border text-sm text-foreground font-mono"
                       >
-                        {"logo" in tool && <img src={tool.logo} alt={tool.name} className="w-5 h-5 object-contain rounded-sm" loading="lazy" />}
+                        <img src={tool.logo} alt={tool.name} className="w-5 h-5 object-contain rounded-sm" loading="lazy" />
                         {tool.name}
                       </span>
                     ))}
@@ -684,7 +726,7 @@ const ProjectCard = ({ project, isExpanded, onToggle, index }: { project: Projec
                     href={project.liveAppUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors font-mono"
                   >
                     <ExternalLink className="w-4 h-4" />
                     View Live App
