@@ -333,7 +333,8 @@ const projects = [
       { value: "100%", label: "Personalization Rate" },
       { value: "Day 1→7", label: "Automated Sequence Cadence" }
     ],
-    type: "none" as const,
+    loomEmbed: "https://www.loom.com/embed/8cff590bcd33465e8d33528bbdefa33b",
+    type: "video" as const,
     tileIcon: Send,
     tileColor: "from-indigo-500/20 to-violet-500/20",
     accentColor: "bg-indigo-500"
