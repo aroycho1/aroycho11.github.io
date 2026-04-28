@@ -39,7 +39,6 @@ const projects = [
     ],
     poweredBy: [
       { name: "Apollo", logo: apolloLogo },
-      { name: "Claude Code", logo: claudeLogo },
       { name: "Vercel", logo: vercelLogo },
       { name: "Node.js", logo: nodejsLogo }
     ],
@@ -144,8 +143,7 @@ const projects = [
       { icon: Wrench, label: "Educator Tools", desc: "Practical implementation" }
     ],
     poweredBy: [
-      { name: "OpenAI", logo: openaiLogo },
-      { name: "Claude Code", logo: claudeLogo }
+      { name: "OpenAI", logo: openaiLogo }
     ],
     type: "local-video" as const,
     tileIcon: GraduationCap,
@@ -249,7 +247,6 @@ const projects = [
       { name: "React", logo: reactLogo },
       { name: "n8n", logo: n8nLogo },
       { name: "Apollo", logo: apolloLogo },
-      { name: "Claude Code", logo: claudeLogo },
       { name: "Google Sheets", logo: googleSheetsLogo }
     ],
     whoCanUse: [
